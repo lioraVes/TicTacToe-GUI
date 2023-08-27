@@ -2,7 +2,9 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 ROOT_TITLE = "Welcome To Tic Tac Toe Game! :)"
-ROOT_SIZE = "345x390"
+MIN_WIDTH_ROOT = 350
+MIN_HEIGHT_ROOT = 395
+ROOT_SIZE = str(MIN_WIDTH_ROOT) + "x" + str(MIN_HEIGHT_ROOT)
 ROOT_BG_COLOR = "#c691d5"
 ROOT_BG_TAG = "bg"
 
@@ -22,6 +24,7 @@ EXIT_COL = 1
 SPACE_COL = 0
 FIRST_SPACE_ROW = 1
 SECOND_SPACE_ROW = 5
+FRAME_PADDING_X_Y = 5
 
 
 class Board:
@@ -33,12 +36,13 @@ class Board:
 
     def __init__(self):
         """ sets the board """
-        self.__root.minsize(350, 395)
+        self.__root.minsize(MIN_WIDTH_ROOT, MIN_HEIGHT_ROOT)
         self.set_heading()
         self.set_buttons()
         self.set_bottom()
 
-        self.__frame.pack(expand=True, padx=5, pady=5)  # for responsive gui
+        self.__frame.pack(expand=True, padx=FRAME_PADDING_X_Y,
+                          pady=FRAME_PADDING_X_Y)  # for responsive gui
 
     def get_root(self):
         """ a getter for the root """
